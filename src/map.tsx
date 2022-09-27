@@ -13,558 +13,323 @@ interface IStates {
   [key: string]: {
     id: string;
     val: string;
+    votes: number;
     heldBy?: 'nixon' | 'kennedy';
   }
 }
 
-// const allStates: IState[] = [
-//   {"id": "AL", "val": "01"},
-//   {"id": "AK", "val": "02"},
-//   {"id": "AS", "val": "60"},
-//   {"id": "AZ", "val": "04"},
-//   {"id": "AR", "val": "05"},
-//   {"id": "CA", "val": "06"},
-//   {"id": "CO", "val": "08"},
-//   {"id": "CT", "val": "09"},
-//   {"id": "DE", "val": "10"},
-//   {"id": "DC", "val": "11"},
-//   {"id": "FL", "val": "12"},
-//   {"id": "FM", "val": "64"},
-//   {"id": "GA", "val": "13"},
-//   {"id": "GU", "val": "66"},
-//   {"id": "HI", "val": "15"},
-//   {"id": "ID", "val": "16"},
-//   {"id": "IL", "val": "17"},
-//   {"id": "IN", "val": "18"},
-//   {"id": "IA", "val": "19"},
-//   {"id": "KS", "val": "20"},
-//   {"id": "KY", "val": "21"},
-//   {"id": "LA", "val": "22"},
-//   {"id": "ME", "val": "23"},
-//   {"id": "MH", "val": "68"},
-//   {"id": "MD", "val": "24"},
-//   {"id": "MA", "val": "25"},
-//   {"id": "MI", "val": "26"},
-//   {"id": "MN", "val": "27"},
-//   {"id": "MS", "val": "28"},
-//   {"id": "MO", "val": "29"},
-//   {"id": "MT", "val": "30"},
-//   {"id": "NE", "val": "31"},
-//   {"id": "NV", "val": "32"},
-//   {"id": "NH", "val": "33"},
-//   {"id": "NJ", "val": "34"},
-//   {"id": "NM", "val": "35"},
-//   {"id": "NY", "val": "36"},
-//   {"id": "NC", "val": "37"},
-//   {"id": "ND", "val": "38"},
-//   {"id": "MP", "val": "69"},
-//   {"id": "OH", "val": "39"},
-//   {"id": "OK", "val": "40"},
-//   {"id": "OR", "val": "41"},
-//   {"id": "PW", "val": "70"},
-//   {"id": "PA", "val": "42"},
-//   {"id": "PR", "val": "72"},
-//   {"id": "RI", "val": "44"},
-//   {"id": "SC", "val": "45"},
-//   {"id": "SD", "val": "46"},
-//   {"id": "TN", "val": "47"},
-//   {"id": "TX", "val": "48"},
-//   {"id": "UM", "val": "74"},
-//   {"id": "UT", "val": "49"},
-//   {"id": "VT", "val": "50"},
-//   {"id": "VA", "val": "51"},
-//   {"id": "VI", "val": "78"},
-//   {"id": "WA", "val": "53"},
-//   {"id": "WV", "val": "54"},
-//   {"id": "WI", "val": "55"},
-//   {"id": "WY", "val": "56"}
-// ];
-
 const allStates: IStates = {
   "10": {
     "id": "DE",
-    "val": "10"
-  },
-  "11": {
-    "id": "DC",
-    "val": "11"
+    "val": "10",
+    votes: 3
   },
   "12": {
     "id": "FL",
-    "val": "12"
+    "val": "12",
+    votes: 10
   },
   "13": {
     "id": "GA",
-    "val": "13"
+    "val": "13",
+    votes: 12
   },
   "15": {
     "id": "HI",
-    "val": "15"
+    "val": "15",
+    votes: 3
   },
   "16": {
     "id": "ID",
-    "val": "16"
+    "val": "16",
+    votes: 4
   },
   "17": {
     "id": "IL",
-    "val": "17"
+    "val": "17",
+    votes: 27
   },
   "18": {
     "id": "IN",
-    "val": "18"
+    "val": "18",
+    votes: 13
   },
   "19": {
     "id": "IA",
-    "val": "19"
+    "val": "19",
+    votes: 10
   },
   "20": {
     "id": "KS",
-    "val": "20"
+    "val": "20",
+    votes: 8
   },
   "21": {
     "id": "KY",
-    "val": "21"
+    "val": "21",
+    votes: 10
   },
   "22": {
     "id": "LA",
-    "val": "22"
+    "val": "22",
+    votes: 10
   },
   "23": {
     "id": "ME",
-    "val": "23"
+    "val": "23",
+    votes: 5
   },
   "24": {
     "id": "MD",
-    "val": "24"
+    "val": "24",
+    votes: 9
   },
   "25": {
     "id": "MA",
-    "val": "25"
+    "val": "25",
+    votes: 16
   },
   "26": {
     "id": "MI",
-    "val": "26"
+    "val": "26",
+    votes: 20
   },
   "27": {
     "id": "MN",
-    "val": "27"
+    "val": "27",
+    votes: 11
   },
   "28": {
     "id": "MS",
-    "val": "28"
+    "val": "28",
+    votes: 8
   },
   "29": {
     "id": "MO",
-    "val": "29"
+    "val": "29",
+    votes: 13
   },
   "30": {
     "id": "MT",
-    "val": "30"
+    "val": "30",
+    votes: 4
   },
   "31": {
     "id": "NE",
-    "val": "31"
+    "val": "31",
+    votes: 6
   },
   "32": {
     "id": "NV",
-    "val": "32"
+    "val": "32",
+    votes: 3
   },
   "33": {
     "id": "NH",
-    "val": "33"
+    "val": "33",
+    votes: 4
   },
   "34": {
     "id": "NJ",
-    "val": "34"
+    "val": "34",
+    votes: 16
   },
   "35": {
     "id": "NM",
-    "val": "35"
+    "val": "35",
+    votes: 4
   },
   "36": {
     "id": "NY",
-    "val": "36"
+    "val": "36",
+    votes: 45
   },
   "37": {
     "id": "NC",
-    "val": "37"
+    "val": "37",
+    votes: 14
   },
   "38": {
     "id": "ND",
-    "val": "38"
+    "val": "38",
+    votes: 4
   },
   "39": {
     "id": "OH",
-    "val": "39"
+    "val": "39",
+    votes: 25
   },
   "40": {
     "id": "OK",
-    "val": "40"
+    "val": "40",
+    votes: 8
   },
   "41": {
     "id": "OR",
-    "val": "41"
+    "val": "41",
+    votes: 6
   },
   "42": {
     "id": "PA",
-    "val": "42"
+    "val": "42",
+    votes: 32
   },
   "44": {
     "id": "RI",
-    "val": "44"
+    "val": "44",
+    votes: 4
   },
   "45": {
     "id": "SC",
-    "val": "45"
+    "val": "45",
+    votes: 8
   },
   "46": {
     "id": "SD",
-    "val": "46"
+    "val": "46",
+    votes: 4
   },
   "47": {
     "id": "TN",
-    "val": "47"
+    "val": "47",
+    votes: 11
   },
   "48": {
     "id": "TX",
-    "val": "48"
+    "val": "48",
+    votes: 24
   },
   "49": {
     "id": "UT",
-    "val": "49"
+    "val": "49",
+    votes: 4
   },
   "50": {
     "id": "VT",
-    "val": "50"
+    "val": "50",
+    votes: 3
   },
   "51": {
     "id": "VA",
-    "val": "51"
+    "val": "51",
+    votes: 12
   },
   "53": {
     "id": "WA",
-    "val": "53"
+    "val": "53",
+    votes: 9
   },
   "54": {
     "id": "WV",
-    "val": "54"
+    "val": "54",
+    votes: 8
   },
   "55": {
     "id": "WI",
-    "val": "55"
+    "val": "55",
+    votes: 12
   },
   "56": {
     "id": "WY",
-    "val": "56"
+    "val": "56",
+    votes: 3
   },
+  // NOT A STATE
+  "11": {
+    "id": "DC",
+    "val": "11",
+    votes: 0
+  },
+  // NOT A STATE
   "60": {
     "id": "AS",
-    "val": "60"
+    "val": "60",
+    votes: 0
   },
+  // NOT A STATE
   "64": {
     "id": "FM",
-    "val": "64"
+    "val": "64",
+    votes: 0
   },
+  // NOT A STATE
   "66": {
     "id": "GU",
-    "val": "66"
+    "val": "66",
+    votes: 0
   },
+  // NOT A STATE
   "68": {
     "id": "MH",
-    "val": "68"
+    "val": "68",
+    votes: 0
   },
+  // NOT A STATE
   "69": {
     "id": "MP",
-    "val": "69"
+    "val": "69",
+    votes: 0
   },
+  // NOT A STATE
   "70": {
     "id": "PW",
-    "val": "70"
+    "val": "70",
+    votes: 0
   },
+  // NOT A STATE
   "72": {
     "id": "PR",
-    "val": "72"
+    "val": "72",
+    votes: 0
   },
+  // NOT A STATE
   "74": {
     "id": "UM",
-    "val": "74"
+    "val": "74",
+    votes: 0
   },
+  // NOT A STATE
   "78": {
     "id": "VI",
-    "val": "78"
+    "val": "78",
+    votes: 0
   },
   "01": {
     "id": "AL",
-    "val": "01"
+    "val": "01",
+    votes: 11
   },
   "02": {
     "id": "AK",
-    "val": "02"
+    "val": "02",
+    votes: 3
   },
   "04": {
     "id": "AZ",
-    "val": "04"
+    "val": "04",
+    votes: 4
   },
   "05": {
     "id": "AR",
-    "val": "05"
+    "val": "05",
+    votes: 8
   },
   "06": {
     "id": "CA",
-    "val": "06"
+    "val": "06",
+    votes: 32
   },
   "08": {
     "id": "CO",
-    "val": "08"
+    "val": "08",
+    votes: 6
   },
   "09": {
     "id": "CT",
-    "val": "09"
+    "val": "09",
+    votes: 8
   }
 }
-
-// const allStates: IStates = {
-//   "AL": {
-//     "id": "AL",
-//     "val": "01"
-//   },
-//   "AK": {
-//     "id": "AK",
-//     "val": "02"
-//   },
-//   "AS": {
-//     "id": "AS",
-//     "val": "60"
-//   },
-//   "AZ": {
-//     "id": "AZ",
-//     "val": "04"
-//   },
-//   "AR": {
-//     "id": "AR",
-//     "val": "05"
-//   },
-//   "CA": {
-//     "id": "CA",
-//     "val": "06"
-//   },
-//   "CO": {
-//     "id": "CO",
-//     "val": "08"
-//   },
-//   "CT": {
-//     "id": "CT",
-//     "val": "09"
-//   },
-//   "DE": {
-//     "id": "DE",
-//     "val": "10"
-//   },
-//   "DC": {
-//     "id": "DC",
-//     "val": "11"
-//   },
-//   "FL": {
-//     "id": "FL",
-//     "val": "12"
-//   },
-//   "FM": {
-//     "id": "FM",
-//     "val": "64"
-//   },
-//   "GA": {
-//     "id": "GA",
-//     "val": "13"
-//   },
-//   "GU": {
-//     "id": "GU",
-//     "val": "66"
-//   },
-//   "HI": {
-//     "id": "HI",
-//     "val": "15"
-//   },
-//   "ID": {
-//     "id": "ID",
-//     "val": "16"
-//   },
-//   "IL": {
-//     "id": "IL",
-//     "val": "17"
-//   },
-//   "IN": {
-//     "id": "IN",
-//     "val": "18"
-//   },
-//   "IA": {
-//     "id": "IA",
-//     "val": "19"
-//   },
-//   "KS": {
-//     "id": "KS",
-//     "val": "20"
-//   },
-//   "KY": {
-//     "id": "KY",
-//     "val": "21"
-//   },
-//   "LA": {
-//     "id": "LA",
-//     "val": "22"
-//   },
-//   "ME": {
-//     "id": "ME",
-//     "val": "23"
-//   },
-//   "MH": {
-//     "id": "MH",
-//     "val": "68"
-//   },
-//   "MD": {
-//     "id": "MD",
-//     "val": "24"
-//   },
-//   "MA": {
-//     "id": "MA",
-//     "val": "25"
-//   },
-//   "MI": {
-//     "id": "MI",
-//     "val": "26"
-//   },
-//   "MN": {
-//     "id": "MN",
-//     "val": "27"
-//   },
-//   "MS": {
-//     "id": "MS",
-//     "val": "28"
-//   },
-//   "MO": {
-//     "id": "MO",
-//     "val": "29"
-//   },
-//   "MT": {
-//     "id": "MT",
-//     "val": "30"
-//   },
-//   "NE": {
-//     "id": "NE",
-//     "val": "31"
-//   },
-//   "NV": {
-//     "id": "NV",
-//     "val": "32"
-//   },
-//   "NH": {
-//     "id": "NH",
-//     "val": "33"
-//   },
-//   "NJ": {
-//     "id": "NJ",
-//     "val": "34"
-//   },
-//   "NM": {
-//     "id": "NM",
-//     "val": "35"
-//   },
-//   "NY": {
-//     "id": "NY",
-//     "val": "36"
-//   },
-//   "NC": {
-//     "id": "NC",
-//     "val": "37"
-//   },
-//   "ND": {
-//     "id": "ND",
-//     "val": "38"
-//   },
-//   "MP": {
-//     "id": "MP",
-//     "val": "69"
-//   },
-//   "OH": {
-//     "id": "OH",
-//     "val": "39"
-//   },
-//   "OK": {
-//     "id": "OK",
-//     "val": "40"
-//   },
-//   "OR": {
-//     "id": "OR",
-//     "val": "41"
-//   },
-//   "PW": {
-//     "id": "PW",
-//     "val": "70"
-//   },
-//   "PA": {
-//     "id": "PA",
-//     "val": "42"
-//   },
-//   "PR": {
-//     "id": "PR",
-//     "val": "72"
-//   },
-//   "RI": {
-//     "id": "RI",
-//     "val": "44"
-//   },
-//   "SC": {
-//     "id": "SC",
-//     "val": "45"
-//   },
-//   "SD": {
-//     "id": "SD",
-//     "val": "46"
-//   },
-//   "TN": {
-//     "id": "TN",
-//     "val": "47"
-//   },
-//   "TX": {
-//     "id": "TX",
-//     "val": "48"
-//   },
-//   "UM": {
-//     "id": "UM",
-//     "val": "74"
-//   },
-//   "UT": {
-//     "id": "UT",
-//     "val": "49"
-//   },
-//   "VT": {
-//     "id": "VT",
-//     "val": "50"
-//   },
-//   "VA": {
-//     "id": "VA",
-//     "val": "51"
-//   },
-//   "VI": {
-//     "id": "VI",
-//     "val": "78"
-//   },
-//   "WA": {
-//     "id": "WA",
-//     "val": "53"
-//   },
-//   "WV": {
-//     "id": "WV",
-//     "val": "54"
-//   },
-//   "WI": {
-//     "id": "WI",
-//     "val": "55"
-//   },
-//   "WY": {
-//     "id": "WY",
-//     "val": "56"
-//   }
-// }
 
 const offsets = {
   VT: [50, -8],
@@ -595,41 +360,19 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
 
   selectStateWinner(id: string) {
     const state = this.state.allStates[id];
-    switch (state.heldBy) {
-      case undefined:
-        this.setState({
-          allStates: {
-            ...this.state.allStates,
-            [id]: {
-              ...state,
-              heldBy: 'kennedy'
-            }
-          }
-        })
-        break;
-      case 'kennedy':
-        this.setState({
-          allStates: {
-            ...this.state.allStates,
-            [id]: {
-              ...state,
-              heldBy: 'nixon'
-            }
-          }
-        });
-        break;
-      case 'nixon':
-        this.setState({
-          allStates: {
-            ...this.state.allStates,
-            [id]: {
-              ...state,
-              heldBy: undefined
-            }
-          }
-        });
-        break;
-    }
+    let heldBy: 'kennedy' | 'nixon' = 'kennedy';
+    if (state.heldBy === 'kennedy') {heldBy = 'nixon'}
+    if (state.heldBy === 'nixon') {heldBy = undefined}
+
+    this.setState({
+      allStates: {
+        ...this.state.allStates,
+        [id]: {
+          ...state,
+          heldBy
+        }
+      }
+    });
   }
 
   render() {
