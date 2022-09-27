@@ -8,6 +8,7 @@ import {
   Annotation
 } from "react-simple-maps";
 import {states} from './states.js';
+import './map.css'
 
 type TCandidate = 'nixon' | 'kennedy';
 
@@ -367,14 +368,14 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
   render() {
     return (
       <>
-        <p style={{position: 'absolute'}}>
+        <p className="scoreBox">
           Kennedy: {this.getCandidateCount('kennedy')}<br />
           Nixon: {this.getCandidateCount('nixon')}<br />
           Uncounted: {this.getCandidateCount(undefined)} <br />
           Total votes: 537<br />
         </p>
-        <p style={{position: 'absolute', right: 0}}>
-          <button onClick={() => this.randomiseStateAllocation()}>Randomise</button> <br />
+        <p className="utilityButtonsBox">
+          <button onClick={() => this.randomiseStateAllocation()}>Randomise</button>
           <button onClick={() => this.clearStateAllocation()}>Clear</button>
         </p>
         <ComposableMap projection="geoAlbersUsa">
@@ -405,9 +406,9 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
                         centroid[0] < -67 &&
                         (Object.keys(offsets).indexOf(currentState.id) === -1 ? (
                           <Marker coordinates={centroid}>
-                            <text y="2" fontSize={14} textAnchor="middle">
-                              {currentState.id}
-                            </text>
+                          <text className="stateAnnotation" textAnchor="middle">
+                            {currentState.id}
+                          </text>
                           </Marker>
                         ) : (
                           <Annotation
@@ -416,7 +417,7 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
                             dx={offsets[currentState.id][0]}
                             dy={offsets[currentState.id][1]}
                           >
-                            <text x={4} fontSize={14} alignmentBaseline="middle">
+                            <text className="stateAnnotation" alignmentBaseline="middle">
                               {currentState.id}
                             </text>
                           </Annotation>

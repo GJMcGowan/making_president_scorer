@@ -1,0 +1,18 @@
+.stateAnnotation {
+  font-size: 14px;
+}
+
+.scoreBox {
+  position: absolute;
+}
+
+.utilityButtonsBox {
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.utilityButtonsBox button:last-child {
+  margin-top: 5px;
+}
