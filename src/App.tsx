@@ -4,9 +4,9 @@ import USAMap from './map';
 function App() {
   return (
     <div>
-      <header>
+      <h2 className="header">
         1960: The Making of the President
-      </header>
+      </h2>
       <USAMap />
     </div>
   );
