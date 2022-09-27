@@ -317,59 +317,76 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
     });
   }
 
+  getCandidateCount(candidate: 'nixon' | 'kennedy' | undefined) {
+    return Object.values(this.state.allStates).reduce((acc, state) => {
+      if (state.heldBy === candidate) {
+        return acc + state.votes;
+      }
+      return acc;
+    }, 0)
+  }
+
   render() {
     return (
-      <ComposableMap projection="geoAlbersUsa">
-        <Geographies geography={states}>
-          {({geographies}) => (
-            <>
-              {geographies.map(geo => (
-                <Geography
-                  key={geo.rsmKey}
-                  stroke="#FFF"
-                  geography={geo}
-                  fill={this.getFill(geo.id)}
-                  style={{
-                    default: {outline: "none"},
-                    hover: {outline: "none"},
-                    pressed: {outline: "none"},
-                  }}
-                  onClick={() => this.selectStateWinner(geo.id)}
-                />
-              ))}
-              {geographies.map(geo => {
-                const centroid = geoCentroid(geo);
-                const currentState = this.state.allStates[geo.id];
-                return (
-                  <g key={geo.rsmKey + "-name"}>
-                    {currentState &&
-                      centroid[0] > -160 &&
-                      centroid[0] < -67 &&
-                      (Object.keys(offsets).indexOf(currentState.id) === -1 ? (
-                        <Marker coordinates={centroid}>
-                          <text y="2" fontSize={14} textAnchor="middle">
-                            {currentState.id}
-                          </text>
-                        </Marker>
-                      ) : (
-                        <Annotation
-                          connectorProps={{}}
-                          subject={centroid}
-                          dx={offsets[currentState.id][0]}
-                          dy={offsets[currentState.id][1]}
-                        >
-                          <text x={4} fontSize={14} alignmentBaseline="middle">
-                            {currentState.id}
-                          </text>
-                        </Annotation>
-                      ))}
-                  </g>
-                );
-              })}
-            </>
-          )}
-        </Geographies>
-      </ComposableMap>
+      <>
+        <p style={{position: 'absolute'}}>
+          Kennedy: {this.getCandidateCount('kennedy')}<br />
+          Nixon: {this.getCandidateCount('nixon')}<br />
+          Uncounted: {this.getCandidateCount(undefined)} <br />
+          Total votes: 537<br />
+        </p>
+        <ComposableMap projection="geoAlbersUsa">
+          <Geographies geography={states}>
+            {({geographies}) => (
+              <>
+                {geographies.map(geo => (
+                  <Geography
+                    key={geo.rsmKey}
+                    stroke="#FFF"
+                    geography={geo}
+                    fill={this.getFill(geo.id)}
+                    style={{
+                      default: {outline: "none"},
+                      hover: {outline: "none"},
+                      pressed: {outline: "none"},
+                    }}
+                    onClick={() => this.selectStateWinner(geo.id)}
+                  />
+                ))}
+                {geographies.map(geo => {
+                  const centroid = geoCentroid(geo);
+                  const currentState = this.state.allStates[geo.id];
+                  return (
+                    <g key={geo.rsmKey + "-name"}>
+                      {currentState &&
+                        centroid[0] > -160 &&
+                        centroid[0] < -67 &&
+                        (Object.keys(offsets).indexOf(currentState.id) === -1 ? (
+                          <Marker coordinates={centroid}>
+                            <text y="2" fontSize={14} textAnchor="middle">
+                              {currentState.id}
+                            </text>
+                          </Marker>
+                        ) : (
+                          <Annotation
+                            connectorProps={{}}
+                            subject={centroid}
+                            dx={offsets[currentState.id][0]}
+                            dy={offsets[currentState.id][1]}
+                          >
+                            <text x={4} fontSize={14} alignmentBaseline="middle">
+                              {currentState.id}
+                            </text>
+                          </Annotation>
+                        ))}
+                    </g>
+                  );
+                })}
+              </>
+            )}
+          </Geographies>
+        </ComposableMap>
+      </>
     )
   }
 }

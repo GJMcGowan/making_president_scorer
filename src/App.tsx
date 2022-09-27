@@ -7,6 +7,7 @@ function App() {
   return (
     <div>
       <header>
+        1960: The Making of the President
       </header>
       <USAMap />
     </div>
