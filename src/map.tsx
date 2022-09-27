@@ -369,10 +369,10 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
     return (
       <>
         <p className="scoreBox">
-          Kennedy: {this.getCandidateCount('kennedy')}<br />
-          Nixon: {this.getCandidateCount('nixon')}<br />
-          Uncounted: {this.getCandidateCount(undefined)} <br />
-          Total votes: 537<br />
+          <span><b>Kennedy:</b> {this.getCandidateCount('kennedy')}</span>
+          <span><b>Nixon:</b> {this.getCandidateCount('nixon')}</span>
+          <span><b>Uncounted:</b> {this.getCandidateCount(undefined)}</span>
+          <span><b>Total votes: </b> 537</span>
         </p>
         <p className="utilityButtonsBox">
           <button onClick={() => this.randomiseStateAllocation()}>Randomise</button>
