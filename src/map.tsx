@@ -9,12 +9,14 @@ import {
 } from "react-simple-maps";
 import {states} from './states.js';
 
+type TCandidate = 'nixon' | 'kennedy';
+
 interface IStates {
   [key: string]: {
     id: string;
     val: string;
     votes: number;
-    heldBy?: 'nixon' | 'kennedy';
+    heldBy?: TCandidate;
   }
 }
 
@@ -317,13 +319,49 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
     });
   }
 
-  getCandidateCount(candidate: 'nixon' | 'kennedy' | undefined) {
+  getCandidateCount(candidate: TCandidate | undefined) {
     return Object.values(this.state.allStates).reduce((acc, state) => {
       if (state.heldBy === candidate) {
         return acc + state.votes;
       }
       return acc;
     }, 0)
+  }
+
+  randomiseStateAllocation() {
+    const states = this.state.allStates;
+
+    const newValues = Object.values(states).map((state) => {
+      return {
+        ...state,
+        heldBy: Math.random() > 0.5 ? 'nixon' : 'kennedy' as TCandidate
+      }
+    });
+    newValues.forEach((state) => {
+      states[state.val] = state;
+    })
+
+    this.setState({
+      allStates: states
+    })
+  }
+
+  clearStateAllocation() {
+    const states = this.state.allStates;
+
+    const newValues = Object.values(states).map((state) => {
+      return {
+        ...state,
+        heldBy: undefined
+      }
+    });
+    newValues.forEach((state) => {
+      states[state.val] = state;
+    })
+
+    this.setState({
+      allStates: states
+    })
   }
 
   render() {
@@ -334,6 +372,10 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
           Nixon: {this.getCandidateCount('nixon')}<br />
           Uncounted: {this.getCandidateCount(undefined)} <br />
           Total votes: 537<br />
+        </p>
+        <p style={{position: 'absolute', right: 0}}>
+          <button onClick={() => this.randomiseStateAllocation()}>Randomise</button> <br />
+          <button onClick={() => this.clearStateAllocation()}>Clear</button>
         </p>
         <ComposableMap projection="geoAlbersUsa">
           <Geographies geography={states}>
