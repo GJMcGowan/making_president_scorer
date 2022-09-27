@@ -9,6 +9,7 @@ import {
 } from "react-simple-maps";
 import {states} from './states.js';
 import './map.css'
+import {ProgressBar} from './progress_bar';
 
 type TCandidate = 'nixon' | 'kennedy';
 
@@ -300,7 +301,7 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
     if (!state) return;
     if (state.heldBy === 'kennedy') return 'blue';
     if (state.heldBy === 'nixon') return 'red';
-    return "#DDD"
+    return "darkgrey"
   }
 
   selectStateWinner(id: string) {
@@ -386,6 +387,7 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
                   <Geography
                     key={geo.rsmKey}
                     stroke="#FFF"
+                    strokeWidth={0.5}
                     geography={geo}
                     fill={this.getFill(geo.id)}
                     style={{
@@ -406,7 +408,7 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
                         centroid[0] < -67 &&
                         (Object.keys(offsets).indexOf(currentState.id) === -1 ? (
                           <Marker coordinates={centroid}>
-                          <text className="stateAnnotation" textAnchor="middle">
+                          <text className="stateAnnotation" textAnchor="middle" fill="white">
                             {currentState.id}
                           </text>
                           </Marker>
@@ -429,6 +431,11 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
             )}
           </Geographies>
         </ComposableMap>
+        <ProgressBar candidateVotes={{
+          kennedy: this.getCandidateCount('kennedy'),
+          nixon: this.getCandidateCount('nixon'),
+          unaligned: this.getCandidateCount(undefined)
+        }} />
       </>
     )
   }

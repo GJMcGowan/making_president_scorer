@@ -1,0 +1,30 @@
+.bar {
+  height: 50px;
+  display: flex;
+  margin: 5px;
+}
+
+.filler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: '100%';
+}
+
+.kennedy-filler {
+  background-color: blue;
+}
+
+.nixon-filler {
+  background-color: red;
+}
+
+.unaligned-filler {
+  background-color: darkgrey;
+}
+
+.label {
+  padding: 7px;
+  color: white;
+  font-size: 16px;
+}
