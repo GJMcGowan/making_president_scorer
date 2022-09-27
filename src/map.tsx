@@ -234,66 +234,6 @@ const allStates: IStates = {
     "val": "56",
     votes: 3
   },
-  // NOT A STATE
-  "11": {
-    "id": "DC",
-    "val": "11",
-    votes: 0
-  },
-  // NOT A STATE
-  "60": {
-    "id": "AS",
-    "val": "60",
-    votes: 0
-  },
-  // NOT A STATE
-  "64": {
-    "id": "FM",
-    "val": "64",
-    votes: 0
-  },
-  // NOT A STATE
-  "66": {
-    "id": "GU",
-    "val": "66",
-    votes: 0
-  },
-  // NOT A STATE
-  "68": {
-    "id": "MH",
-    "val": "68",
-    votes: 0
-  },
-  // NOT A STATE
-  "69": {
-    "id": "MP",
-    "val": "69",
-    votes: 0
-  },
-  // NOT A STATE
-  "70": {
-    "id": "PW",
-    "val": "70",
-    votes: 0
-  },
-  // NOT A STATE
-  "72": {
-    "id": "PR",
-    "val": "72",
-    votes: 0
-  },
-  // NOT A STATE
-  "74": {
-    "id": "UM",
-    "val": "74",
-    votes: 0
-  },
-  // NOT A STATE
-  "78": {
-    "id": "VI",
-    "val": "78",
-    votes: 0
-  },
   "01": {
     "id": "AL",
     "val": "01",
@@ -353,6 +293,8 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
 
   getFill(id: string) {
     const state = this.state.allStates[id];
+    // the map includes "states" which are not in the list so we have to handle this case
+    if (!state) return;
     if (state.heldBy === 'kennedy') return 'blue';
     if (state.heldBy === 'nixon') return 'red';
     return "#DDD"
