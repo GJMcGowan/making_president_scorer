@@ -35,13 +35,17 @@ export default class USAMap extends React.Component<{}, {allStates: IStates, sho
     };
   }
 
-  getFill(id: string) {
+  getFill(id: string, showHistoricalResult: boolean) {
     const state = this.state.allStates[id];
     // the map includes "states" which are not in the list so we have to handle this case
     if (!state) return;
-    if (state.heldBy === 'kennedy') return 'blue';
-    if (state.heldBy === 'nixon') return 'red';
-    if (state.heldBy === 'byrd') return 'purple'
+
+    const resultToUse = showHistoricalResult ? state.historicallyHeldBy : state.heldBy;
+
+    if (resultToUse === 'kennedy') return 'blue';
+    if (resultToUse === 'nixon') return 'red';
+    if (resultToUse === 'byrd') return 'purple'
+
     return "darkgrey"
   }
 
@@ -110,39 +114,23 @@ export default class USAMap extends React.Component<{}, {allStates: IStates, sho
     });
   }
 
-  showHistoricalResult() {
-    const states = this.state.allStates;
-
-    const newValues = Object.values(states).map((state) => {
-      return {
-        ...state,
-        heldBy: state.historicallyHeldBy
-      }
-    });
-    newValues.forEach((state) => {
-      states[state.val] = state;
-    });
-
+  toogleHistoricalResult(checked: boolean) {
     this.setState({
-      allStates: states,
-      showHistoricalResult: true
-    });
+      showHistoricalResult: checked
+    })
   }
 
   render() {
     return (
       <>
-        <p className="scoreBox">
-          <span><b>Kennedy:</b> {this.getCandidateCount('kennedy')}</span>
-          <span><b>Nixon:</b> {this.getCandidateCount('nixon')}</span>
-          <span><b>Uncounted:</b> {this.getCandidateCount(undefined)}</span>
-          <span><b>Total votes: </b> 537</span>
-        </p>
-        <p className="utilityButtonsBox">
-          <button onClick={() => this.randomiseStateAllocation()}>Randomise</button>
-          <button onClick={() => this.clearStateAllocation()}>Clear</button>
-          <button onClick={() => this.showHistoricalResult()}>Show historical result</button>
-        </p>
+        <div className="utilityButtonsBox">
+          <button type="button" className="btn" onClick={() => this.randomiseStateAllocation()}>Randomise</button>
+          <button type="button" className="btn" onClick={() => this.clearStateAllocation()}>Clear</button>
+          <div className="form-check" style={{alignSelf: 'flex-end'}}>
+            <input className="form-check-input" type='checkbox' checked={this.state.showHistoricalResult} onChange={(value) => this.toogleHistoricalResult(value.currentTarget.checked)} id="historicalResults" />
+            <label className="form-check-label" htmlFor="historicalResults">Show historical results (read only)</label>
+          </div>
+        </div>
         <ComposableMap projection="geoAlbersUsa">
           <Geographies geography={us_map}>
             {({geographies}) => (
@@ -153,13 +141,13 @@ export default class USAMap extends React.Component<{}, {allStates: IStates, sho
                     stroke="#FFF"
                     strokeWidth={0.5}
                     geography={geo}
-                    fill={this.getFill(geo.id)}
+                    fill={this.getFill(geo.id, this.state.showHistoricalResult)}
                     style={{
                       default: {outline: "none"},
                       hover: {outline: "none"},
                       pressed: {outline: "none"},
                     }}
-                    onClick={() => this.selectStateWinner(geo.id)}
+                    onClick={() => !this.state.showHistoricalResult && this.selectStateWinner(geo.id)}
                   />
                 ))}
                 {geographies.map(geo => {

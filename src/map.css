@@ -1,20 +1,8 @@
 .stateAnnotation {
   font-size: 14px;
+  user-select: none;
 }
 
-.scoreBox {
-  position: absolute;
-  display: flex;
-    flex-direction: column;
-}
-
-.utilityButtonsBox {
-  position: absolute;
-  right: 5px;
-  display: flex;
-  flex-direction: column;
-}
-
-.utilityButtonsBox :not(button:first-child) {
-  margin-top: 5px;
+.utilityButtonsBox>* {
+  margin-right: 5px;
 }
