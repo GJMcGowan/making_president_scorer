@@ -7,4 +7,6 @@ This is a map which allows you to assign states to a candidate and then see the 
 
 You can also compare yourself to the historical result.
 
+![](demo.png)
+
 [How to run the code](docs/CONTRIBUTING.md)
