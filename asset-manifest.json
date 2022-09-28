@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/making_president_scorer/static/css/main.36c6f52e.css",
-    "main.js": "/making_president_scorer/static/js/main.7b3e1552.js",
+    "main.css": "/making_president_scorer/static/css/main.18d4c470.css",
+    "main.js": "/making_president_scorer/static/js/main.936dfaa3.js",
     "index.html": "/making_president_scorer/index.html",
-    "main.36c6f52e.css.map": "/making_president_scorer/static/css/main.36c6f52e.css.map",
-    "main.7b3e1552.js.map": "/making_president_scorer/static/js/main.7b3e1552.js.map"
+    "main.18d4c470.css.map": "/making_president_scorer/static/css/main.18d4c470.css.map",
+    "main.936dfaa3.js.map": "/making_president_scorer/static/js/main.936dfaa3.js.map"
   },
   "entrypoints": [
-    "static/css/main.36c6f52e.css",
-    "static/js/main.7b3e1552.js"
+    "static/css/main.18d4c470.css",
+    "static/js/main.936dfaa3.js"
   ]
 }
