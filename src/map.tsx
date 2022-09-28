@@ -160,7 +160,11 @@ export default class USAMap extends React.Component<{}, {allStates: IStates, sho
                         centroid[0] < -67 &&
                         (Object.keys(stateOffsets).indexOf(currentState.id) === -1 ? (
                           <Marker coordinates={centroid}>
-                          <text className="stateAnnotation" textAnchor="middle" fill="white">
+                          <text
+                            className="stateAnnotation"
+                            textAnchor="middle"
+                            fill="white"
+                            onClick={() => !this.state.showHistoricalResult && this.selectStateWinner(geo.id)}>
                             {currentState.id}
                           </text>
                           </Marker>
@@ -171,7 +175,10 @@ export default class USAMap extends React.Component<{}, {allStates: IStates, sho
                             dx={stateOffsets[currentState.id][0]}
                             dy={stateOffsets[currentState.id][1]}
                           >
-                            <text className="stateAnnotation" alignmentBaseline="middle">
+                            <text
+                              className="stateAnnotation"
+                              alignmentBaseline="middle"
+                              onClick={() => !this.state.showHistoricalResult && this.selectStateWinner(geo.id)}>
                               {currentState.id}
                             </text>
                           </Annotation>
