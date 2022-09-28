@@ -1,7 +1,6 @@
 .bar {
   height: 50px;
   display: flex;
-  margin: 5px;
 }
 
 .filler {
@@ -19,6 +18,9 @@
   background-color: red;
 }
 
+.byrd-filler {
+  background-color: purple;
+}
 .unaligned-filler {
   background-color: darkgrey;
 }

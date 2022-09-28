@@ -22,14 +22,16 @@ const stateOffsets = {
   NJ: [34, 1],
   DE: [33, 0],
   MD: [47, 10],
-  DC: [49, 21]
+  DC: [49, 21],
+  HI: [5, 40]
 };
 
-export default class USAMap extends React.Component<{}, {allStates: IStates}> {
+export default class USAMap extends React.Component<{}, {allStates: IStates, showHistoricalResult: boolean}> {
   constructor(props) {
     super(props);
     this.state = {
-      allStates: allStates
+      allStates: allStates,
+      showHistoricalResult: false
     };
   }
 
@@ -39,6 +41,7 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
     if (!state) return;
     if (state.heldBy === 'kennedy') return 'blue';
     if (state.heldBy === 'nixon') return 'red';
+    if (state.heldBy === 'byrd') return 'purple'
     return "darkgrey"
   }
 
@@ -55,7 +58,8 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
           ...state,
           heldBy
         }
-      }
+      },
+      showHistoricalResult: false
     });
   }
 
@@ -82,7 +86,8 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
     });
 
     this.setState({
-      allStates: states
+      allStates: states,
+      showHistoricalResult: false
     });
   }
 
@@ -100,7 +105,27 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
     });
 
     this.setState({
-      allStates: states
+      allStates: states,
+      showHistoricalResult: false
+    });
+  }
+
+  showHistoricalResult() {
+    const states = this.state.allStates;
+
+    const newValues = Object.values(states).map((state) => {
+      return {
+        ...state,
+        heldBy: state.historicallyHeldBy
+      }
+    });
+    newValues.forEach((state) => {
+      states[state.val] = state;
+    });
+
+    this.setState({
+      allStates: states,
+      showHistoricalResult: true
     });
   }
 
@@ -116,6 +141,7 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
         <p className="utilityButtonsBox">
           <button onClick={() => this.randomiseStateAllocation()}>Randomise</button>
           <button onClick={() => this.clearStateAllocation()}>Clear</button>
+          <button onClick={() => this.showHistoricalResult()}>Show historical result</button>
         </p>
         <ComposableMap projection="geoAlbersUsa">
           <Geographies geography={us_map}>
@@ -169,9 +195,10 @@ export default class USAMap extends React.Component<{}, {allStates: IStates}> {
             )}
           </Geographies>
         </ComposableMap>
-        <ProgressBar candidateVotes={{
+        <ProgressBar showHistoricalResults={this.state.showHistoricalResult} candidateVotes={{
           kennedy: this.getCandidateCount('kennedy'),
           nixon: this.getCandidateCount('nixon'),
+          byrd: this.getCandidateCount('byrd'),
           unaligned: this.getCandidateCount(undefined)
         }} />
       </>
