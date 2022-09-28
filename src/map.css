@@ -1,6 +1,6 @@
 .stateAnnotation {
   font-size: 14px;
-  user-select: none;
+  pointer-events: none;
 }
 
 .utilityButtonsBox>* {
